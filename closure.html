@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script>
+
+/*  This is an example of a closure. After foo returns, its scope is saved, and only the function
+that it returns has access to it. In the previous example, baz and blat each have a copy of this
+scope and a copy of a that only they can modify. The most common way of creating a closure
+is by returning a nested function.  */
+
+function foo() {
+	var a = 10;
+	function bar() {
+		a *= 2;
+		return a;
+	}
+	return bar;
+}
+
+var baz = foo(); // baz is now a reference to function bar.
+console.log(baz()); // returns 20.
+console.log(baz()); // returns 40.
+console.log(baz()); // returns 80.
+
+var blat = foo(); // blat is another reference to bar.
+console.log(blat()); // returns 20, because a new copy of a is being used.
+
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
